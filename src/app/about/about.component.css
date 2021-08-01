@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+div.about {
+    display: block;
+    margin: auto;
+    background-color: #f3f3f2;
+    padding: 3em;
+}
+
+div.about a {
+    text-decoration: none;
+    color: #0B2133;
+    font-weight: bold;
+}
+
+p.name {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 1px solid #2b415433;
+}

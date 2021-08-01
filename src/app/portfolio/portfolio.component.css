@@ -1,0 +1,11 @@
+table tr {
+}
+
+table tr td {
+    padding: 25px;
+}
+
+table tr td img{
+    width: 50%;
+    height: 50%;
+}
