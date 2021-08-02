@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  loginHandler(form: NgForm): void {
+    if (form.invalid) { return; }
+    console.log(form);
   }
 
 }

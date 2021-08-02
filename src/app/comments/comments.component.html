@@ -1,1 +1,19 @@
-<p>comments works!</p>
+<form #form="ngForm" (ngSubmit)="loginHandler(form)">
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" #authorInput="ngModel" ngModel required author>
+        <ul *ngIf="authorInput.invalid && authorInput.touched" class="errors">
+            <li *ngIf="authorInput.errors?.required">Author is required</li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" #descriptionInput="ngModel" ngModel required
+            [maxlength]="250">
+        <ul *ngIf="descriptionInput.invalid && descriptionInput.touched" class="errors">
+            <li *ngIf="descriptionInput.errors?.required">Description is required</li>
+            <li *ngIf="descriptionInput.errors?.minlength">Description should be less than 250 characters</li>
+        </ul>
+    </div>
+    <button>Submit</button>
+</form>

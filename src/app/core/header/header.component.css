@@ -8,6 +8,8 @@ body {
 
 header ul {
     margin: 0;
+    padding-bottom: 30px;
+    vertical-align: middle;
 }
 
 img {
