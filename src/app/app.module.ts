@@ -14,6 +14,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SameValueDirective } from './same-value.directive';
+import { UserService } from './user/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,12 @@ import { SameValueDirective } from './same-value.directive';
   imports: [
     BrowserModule,
     CoreModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

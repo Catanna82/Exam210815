@@ -6,18 +6,18 @@ const mongo = require('mongoose');
 (function connect() {
     return new Promise((resolve, reject) => {
         mongo.connect('mongodb://localhost:27017/JT', {
-           useNewUrlParser: true,
-           useUnifiedTopology: true
-       });
-       const db = mongo.connection;
-       db.on('error', err => {
-           console.error('Database error: ', err.message);
-           reject(err.message);
-       });
-       db.on('open', () => {
-           console.log('Database connected');
-           resolve();
-       });
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        const db = mongo.connection;
+        db.on('error', err => {
+            console.error('Database error: ', err.message);
+            reject(err.message);
+        });
+        db.on('open', () => {
+            console.log('Database connected');
+            resolve();
+        });
     });
 
 })();
@@ -46,24 +46,14 @@ const model = mongo.model('users', UserSchema, 'users');
 
 app.post('/api/SaveUser', function (req, res) {
     const mod = new model(req.body);
-    if (req.body.mode == 'Save') {
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send({ data: 'Record has been Inserted..!!' });
-            }
-        });
-    } else {
-        model.findByIdAndUpdate(req.body.id, { email: req.body.email, password: req.body.password },
-            function (err, data) {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.send({ data: 'Record has been Updated..!!' });
-                }
-            });
-    }
+    mod.save(function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send({ data: 'Record has been Inserted..!!' });
+        }
+    });
+
 })
 app.post('/api/deleteUser', function (req, res) {
     model.remove({ _id: req.body.id }, function (err) {
@@ -75,8 +65,8 @@ app.post('/api/deleteUser', function (req, res) {
     });
 });
 
-app.get('/api/getUser', function (req, res) {
-    model.find({}, function (err, data) {
+app.get('/api/login', function (req, res) {
+    model.find(req.body, function (err, data) {
         if (err) {
             res.send(err);
         } else {
