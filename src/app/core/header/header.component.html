@@ -12,36 +12,40 @@
             <img src="assets/img/logo.png">
         </a>
         <li>
-            <a href="" style="padding: 10px;">Начало</a>
+            <a href="" style="padding: 10px;" >Начало</a>
         </li>
         <li>
             <a href="/about" style="padding: 10px;">За мен</a>
         </li>
         <li>
+          <a href="/portfolio" style="padding: 10px;">Портфолио</a>
+        </li>
+        <li>
             <a href="/contacts" style="padding: 10px;">Контакти</a>
         </li>
-        <li>
+        <li *ngIf="isLogged">
             <a href="/gallery" style="padding: 10px;">Галерия</a>
         </li>
-        <li>
+        <li *ngIf="isLogged">
+          <a href="/comments" style="padding: 10px;">Коментари</a>
+        </li>
+        <li *ngIf="!isLogged">
             <a href="/register" style="padding: 10px;">Регистрация</a>
         </li>
-        <li>
-            <a href="/portfolio" style="padding: 10px;">Портфолио</a>
-        </li>
-        <li>
-            <a href="/comments" style="padding: 10px;">Коментари</a>
-        </li>
-        <li>
+        <li *ngIf="!isLogged">
             <a href="/login" style="padding: 10px;">Вход</a>
         </li>
+        <li *ngIf="isLogged">
+            <a (click)="logout()" style="padding: 10px;">Изход</a>
+        </li>
     </ul>
+
     </header>
     <!-- <main>
       {{#if error}}
       <span class="error">{{error}}</span>
       {{/if}}
-      {{{body}}}
+      {{body}}
     </main> -->
   </div>
 </body>

@@ -65,12 +65,12 @@ app.post('/api/deleteUser', function (req, res) {
     });
 });
 
-app.get('/api/login', function (req, res) {
+app.post('/api/login', function (req, res) {
     model.find(req.body, function (err, data) {
         if (err) {
             res.send(err);
         } else {
-            res.send(data);
+            res.send(data[0]);
         }
     });
 });

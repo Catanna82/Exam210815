@@ -20,12 +20,16 @@ export class UserService {
 
   login(data: { email: string; password: string }) {
     return this.http.post<IUser>(`http://localhost:3000/api/login`, data, { withCredentials: true }).pipe(
-      tap((user) => this.user = user)
+      tap((user) => {
+        if(data.email === user.email && data.password === user.password) {
+          this.user = user
+        }
+      })
     );
   }
 
   register(data: { email: string; password: string }) {
-    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, data, { withCredentials: true }).pipe(
+    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, data, { withCredentials: false }).pipe(
       tap((user) => this.user = user)
     );
   }
@@ -36,11 +40,10 @@ export class UserService {
   //   )
   // }
 
-  // logout() {
-  //   return this.http.post<IUser>(`${apiURL}/users/logout`, {}, { withCredentials: true }).pipe(
-  //     tap(() => this.user = null)
-  //   );
-  // }
+  logout() {
+    this.user = null;
+    return {};
+  }
 
   // updateProfile(data: { username: string; email: string; tel: string; }) {
   //   return this.http.put<IUser>(`${apiURL}/users/profile`, data, { withCredentials: true }).pipe(

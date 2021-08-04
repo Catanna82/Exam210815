@@ -13,7 +13,6 @@
     <input type="password" name="password" id="password" #passwordInput="ngModel" ngModel required [minlength]="6">
     <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
       <li *ngIf="passwordInput.errors?.required">Password is required</li>
-      <li *ngIf="passwordInput.errors?.minlength">Password should be more than 6 characters</li>
     </ul>
   </div>
   <!-- <div class="form-group">
