@@ -1,51 +1,92 @@
+<!-- <header>
+  <ul>
+    <a>
+      <img src="assets/img/logo.png">
+    </a>
+    <li>
+      <a href="" style="padding: 10px;">Начало</a>
+    </li>
+    <li>
+      <a href="/about" style="padding: 10px;">За мен</a>
+    </li>
+    <li>
+      <a href="/portfolio" style="padding: 10px;">Портфолио</a>
+    </li>
+    <li>
+      <a href="/contacts" style="padding: 10px;">Контакти</a>
+    </li>
+    <li *ngIf="isLogged">
+      <a href="/gallery" style="padding: 10px;">Галерия</a>
+    </li>
+    <li *ngIf="isLogged">
+      <a href="/comments" style="padding: 10px;">Коментари</a>
+    </li>
+    <li *ngIf="!isLogged">
+      <a href="/register" style="padding: 10px;">Регистрация</a>
+    </li>
+    <li *ngIf="!isLogged">
+      <a href="/login" style="padding: 10px;">Вход</a>
+    </li>
+    <li *ngIf="isLogged">
+      <a (click)="logout()" style="padding: 10px;">Изход</a>
+    </li>
+  </ul>
+</header> -->
+
 <header>
-  <meta charset="UTF-8">
-  <title>Works</title>
-
-  <link rel='shortcut icon' type='image/x-icon' href='' />
-</header>
-<body>
-  <div class="container">
-    <header>
-      <ul>
-        <a>
-            <img src="assets/img/logo.png">
-        </a>
+  <div class="mini-navbar-wrap">
+    <div class="logo-wrap">
+      <p class="logo"><span class="logo" href="/"><img src="assets/img/logo.png"></span></p>
+    </div>
+    <div class="mini-navbar">
+      <ul *ngIf="!isLogged">
         <li>
-            <a href="" style="padding: 10px;" >Начало</a>
+          <a href="login">Вход</a>
         </li>
         <li>
-            <a href="/about" style="padding: 10px;">За мен</a>
+          <a href="register">Регистрация</a>
         </li>
-        <li>
-          <a href="/portfolio" style="padding: 10px;">Портфолио</a>
-        </li>
-        <li>
-            <a href="/contacts" style="padding: 10px;">Контакти</a>
-        </li>
-        <li *ngIf="isLogged">
-            <a href="/gallery" style="padding: 10px;">Галерия</a>
-        </li>
-        <li *ngIf="isLogged">
-          <a href="/comments" style="padding: 10px;">Коментари</a>
-        </li>
-        <li *ngIf="!isLogged">
-            <a href="/register" style="padding: 10px;">Регистрация</a>
-        </li>
-        <li *ngIf="!isLogged">
-            <a href="/login" style="padding: 10px;">Вход</a>
-        </li>
-        <li *ngIf="isLogged">
-            <a (click)="logout()" style="padding: 10px;">Изход</a>
-        </li>
-    </ul>
-
-    </header>
-    <!-- <main>
-      {{#if error}}
-      <span class="error">{{error}}</span>
-      {{/if}}
-      {{body}}
-    </main> -->
+      </ul>
+      <ul *ngIf="isLogged">
+        <!-- <li href="/profile">{{...}}'s profile</li> -->
+        <li (click)="logout()">Изход</li>
+      </ul>
+    </div>
   </div>
-</body>
+  <nav>
+    <ul *ngIf="!isLogged">
+      <li>
+        <a href="">Начало</a>
+      </li>
+      <li>
+        <a href="/about">За мен</a>
+      </li>
+      <li>
+        <a href="/contacts">Контакти</a>
+      </li>
+      <li>
+        <a href="/portfolio">Портфолио</a>
+      </li>
+    </ul>
+    <ul *ngIf="isLogged">
+      <li>
+        <a href="">Начало</a>
+      </li>
+      <li>
+        <a href="/about">За мен</a>
+      </li>
+      <li>
+        <a href="/contacts">Контакти</a>
+      </li>
+      <li>
+        <a href="/comments">Коментари</a>
+      </li>
+      <li>
+        <a href="/gallery">Галерия</a>
+      </li>
+      <li>
+        <a href="/portfolio">Портфолио</a>
+      </li>
+    </ul>
+  </nav>
+</header>

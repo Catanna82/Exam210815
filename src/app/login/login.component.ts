@@ -10,11 +10,12 @@ import { UserService } from '../user/user.service';
 })
 export class LoginComponent {
 
+
   constructor(
-        // private activatedRoute: ActivatedRoute,
-        private userService: UserService,
-        private router: Router
-      ) { }
+    // private activatedRoute: ActivatedRoute,
+    private userService: UserService,
+    private router: Router
+  ) { }
   loginHandler(form: NgForm): void {
     if (form.invalid) { return; }
     this.userService.login(form.value).subscribe({

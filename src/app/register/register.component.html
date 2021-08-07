@@ -1,7 +1,7 @@
-<form [formGroup]="form" (ngSubmit)="registerHandler()">
+<form [formGroup]="form" class="register" (ngSubmit)="registerHandler()">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" name="email" id="email" formControlName="email">
+      <input type="text" name="email" id="email" formControlName="email" placeholder="john@gmail.com" required email>
       <ul *ngIf="form.get('email')!.invalid && form.get('email')!.touched" class="errors">
         <li *ngIf="form.get('email')!.errors?.required">Email is required</li>
         <li *ngIf="form.get('email')!.errors?.email">Email is invalid</li>
@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" name="password" id="password" formControlName="password">
+      <input type="password" name="password" id="password" formControlName="password" placeholder="******">
       <ul *ngIf="form.get('password')!.invalid && form.get('password')!.touched" class="errors">
         <li *ngIf="form.get('password')!.errors?.required">Password is required</li>
         <li *ngIf="form.get('password')!.errors?.minlength">Password should be more than 6 characters</li>
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <label for="repeat-password">Repeat password</label>
-      <input type="password" name="repeatPassword" id="repeat-password" formControlName="repeatPassword">
+      <input type="password" name="repeatPassword" id="repeat-password" formControlName="repeatPassword" placeholder="******">
       <ul *ngIf="form.get('repeatPassword')!.invalid && form.get('repeatPassword')!.touched" class="errors">
         <li *ngIf="form.get('repeatPassword')!.errors?.required">Repeat password is required</li>
         <li *ngIf="form.get('repeatPassword')!.errors?.minlength">Repeat password should be more than 6 characters
