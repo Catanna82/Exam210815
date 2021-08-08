@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { IComment } from '../shared/interfaces';
+import { IComment } from '../shared/interfaces/comments';
 
 @Injectable({
   providedIn: 'root'

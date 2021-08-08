@@ -20,6 +20,7 @@ import { AdminGalleryComponent } from './admin-gallery/admin-gallery.component';
 import { AdminGalleryService } from './admin-gallery/admin-gallery.service';
 import { GalleryService } from './gallery/gallery.service';
 import { CommentService } from './comments/comment.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CommentService } from './comments/comment.service';
     LoginComponent,
     RegisterComponent,
     SameValueDirective,
-    AdminGalleryComponent
+    AdminGalleryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

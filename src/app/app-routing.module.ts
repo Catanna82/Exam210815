@@ -6,6 +6,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -51,10 +52,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminGalleryComponent,
   },
-  // {
-  //   path: '**',
-  //   component: NotFoundComponent
-  // }
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

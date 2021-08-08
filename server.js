@@ -58,14 +58,22 @@ const commentsModel = mongo.model('comments', CommentsSchema, 'comments');
 
 app.post('/api/saveAlbums', function (req, res) {
     const mod = new albumsModel(req.body);
-    // console.log(mod);
-    mod.save(function (err, data) {
+    albumsModel.find({ albumName: req.body.albumName }, function (err, data) {
         if (err) {
             res.send(err);
         } else {
-            res.send({ data: 'Record has been Inserted..!!' });
+            if (data.length === 0) {
+                mod.save(function (err, data) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        res.send({ data: 'Record has been Inserted..!!' });
+                    }
+                });
+            }
         }
     });
+
 });
 
 const model = mongo.model('users', UserSchema, 'users');
@@ -122,6 +130,31 @@ app.get('/api/loadComment', function (req, res) {
     });
 });
 
+app.get('/api/loadImages', function (req, res) {
+    albumsModel.find({}, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            const images = data.reduce((acc, e) => {
+                return acc.concat(e.images);
+            }, []);
+
+            let viewImg = [];
+            function getRandom(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            for (let index = 0; index < 9; index++) {
+                const num = getRandom(0, images.length - 1);
+                let el = images.splice(num, 1);
+                viewImg = viewImg.concat(el);
+            }
+            res.send(viewImg);
+        }
+    });
+});
+
 app.get('/api/loadAlbums', function (req, res) {
     albumsModel.find({}, function (err, data) {
         if (err) {
@@ -131,6 +164,7 @@ app.get('/api/loadAlbums', function (req, res) {
         }
     });
 });
+
 app.get(`/api/loadAlbums/:albumName`, function (req, res) {
     albumsModel.findOne(req.params, function (err, data) {
         if (err) {
