@@ -1,11 +1,4 @@
-<form #form="ngForm" (ngSubmit)="loginHandler(form)" style="background-image: url('assets/img/comments.jpg');">
-    <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" name="author" id="author" #authorInput="ngModel" ngModel required author>
-        <ul *ngIf="authorInput.invalid && authorInput.touched" class="errors">
-            <li *ngIf="authorInput.errors?.required">Author is required</li>
-        </ul>
-    </div>
+<form #form="ngForm" (ngSubmit)="uploadComment(form)">
     <div class="form-group">
         <label for="description">Description</label>
         <input type="text" name="description" id="description" #descriptionInput="ngModel" ngModel required
@@ -17,3 +10,8 @@
     </div>
     <button>Submit</button>
 </form>
+
+<div *ngFor="let comment of comments">
+    <div class="email">{{comment.email}}</div>
+    <div class="comments">{{comment.description}}</div>
+</div>

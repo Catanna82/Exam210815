@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser');
 const mongo = require('mongoose');
 
@@ -23,9 +23,9 @@ const mongo = require('mongoose');
 })();
 
 const app = express();
-app.use(bodyParser());
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser({ limit: '50mb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -42,6 +42,32 @@ const UserSchema = new Schema({
     password: { type: String }
 }, { versionKey: false });
 
+const CommentsSchema = new Schema({
+    email: { type: String },
+    description: { type: String }
+}, { versionKey: false });
+
+const AlbumsSchema = new Schema({
+    albumName: { type: String },
+    category: { type: String },
+    images: { type: Array }
+}, { versionKey: false });
+
+const albumsModel = mongo.model('albums', AlbumsSchema, 'albums');
+const commentsModel = mongo.model('comments', CommentsSchema, 'comments');
+
+app.post('/api/saveAlbums', function (req, res) {
+    const mod = new albumsModel(req.body);
+    // console.log(mod);
+    mod.save(function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send({ data: 'Record has been Inserted..!!' });
+        }
+    });
+});
+
 const model = mongo.model('users', UserSchema, 'users');
 
 app.post('/api/SaveUser', function (req, res) {
@@ -53,8 +79,8 @@ app.post('/api/SaveUser', function (req, res) {
             res.send({ data: 'Record has been Inserted..!!' });
         }
     });
+});
 
-})
 app.post('/api/deleteUser', function (req, res) {
     model.remove({ _id: req.body.id }, function (err) {
         if (err) {
@@ -71,6 +97,46 @@ app.post('/api/login', function (req, res) {
             res.send(err);
         } else {
             res.send(data[0]);
+        }
+    });
+});
+
+app.post('/api/saveComment', function (req, res) {
+    const mod = new commentsModel(req.body);
+    mod.save(function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send({ data: 'Record has been Inserted..!!' });
+        }
+    });
+});
+
+app.get('/api/loadComment', function (req, res) {
+    commentsModel.find({}, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+app.get('/api/loadAlbums', function (req, res) {
+    albumsModel.find({}, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data.map((a) => a.albumName));
+        }
+    });
+});
+app.get(`/api/loadAlbums/:albumName`, function (req, res) {
+    albumsModel.findOne(req.params, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data.images);
         }
     });
 });

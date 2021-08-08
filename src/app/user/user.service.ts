@@ -19,26 +19,23 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  login(data: { email: string; password: string }) {
+  login(data: { email: string; password: string; }) {
     return this.http.post<IUser>(`http://localhost:3000/api/login`, data, { withCredentials: true }).pipe(
       tap((user) => {
         if (data.email === user.email && data.password === user.password) {
-          debugger;
-          this.user = user;
+          sessionStorage.setItem('userEmail', user.email);
+          if (user.admin) {
+            sessionStorage.setItem('admin', user.email);
+          }
         }
       })
     );
   }
 
-  register(data: { email: string; password: string }) {
-    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, data, { withCredentials: true }).pipe(
-      tap((user) => this.user = user)
+  register(data: { email: string; password: string; }) {
+    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, { ...data, admin: false }, { withCredentials: true }).pipe(
+      tap((user) => sessionStorage.setItem('userEmail', user.email))
     );
-  }
-
-  logout() {
-    this.user = null;
-    return {};
   }
 
   // getProfileInfo() {

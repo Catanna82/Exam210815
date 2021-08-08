@@ -1,0 +1,36 @@
+<div class="container-upload">
+    <form #form="ngForm" class="admin" action="" method="POST" autocomplete="off">
+        <ng-container>
+            <div class="flex">
+                <div class="flex">
+                    <p>Album name: <input #albumNameInput="ngModel" ngModel type="text" name="albumName" id="albumName">
+                    </p>
+                </div>
+                <form class="admin" method="POST">
+                    <input (change)="handleSelectImages($event.target)" type="file" id="images" name="images" multiple>
+                </form>
+                <div class="flex">
+                    <p>Category:
+                        <select #albumCategoryInput="ngModel" ngModel name="category" id="category" class="admin">
+                            <option value="Event">Event</option>
+                            <option value="Portrait">Portrait</option>
+                            <option value="Kids">Kids</option>
+                            <option value="Nature">Nature</option>
+                        </select>
+                    </p>
+                </div>
+                <button type="button" class="red-button">Cancel</button>
+                <button class="green-button" (click)="uploadAlbums(form)">Save</button>
+            </div>
+        </ng-container>
+    </form>
+</div>
+
+<!-- Container for the image gallery -->
+<div class="container">
+    <div class="row">
+        <div *ngFor="let img of files" class="column">
+            <img class="demo cursor" src={{img}} style="width:100%" alt="The Woods">
+        </div>
+    </div>
+</div>

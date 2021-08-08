@@ -16,6 +16,11 @@ import { RegisterComponent } from './register/register.component';
 import { SameValueDirective } from './same-value.directive';
 import { UserService } from './user/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminGalleryComponent } from './admin-gallery/admin-gallery.component';
+import { AdminGalleryService } from './admin-gallery/admin-gallery.service';
+import { GalleryService } from './gallery/gallery.service';
+import { CommentService } from './comments/comment.service';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommentsComponent,
     LoginComponent,
     RegisterComponent,
-    SameValueDirective
+    SameValueDirective,
+    AdminGalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,12 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    AdminGalleryService,
+    GalleryService,
+    CommentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

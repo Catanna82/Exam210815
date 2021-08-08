@@ -62,17 +62,11 @@
   .login a:hover, .register a:hover {
     cursor: pointer;
   }
-  
-  .register .tel {
-    padding-right: 0.8em;
-  }
-  
+
   .login .field, .register .field {
     display: flex;
     padding-bottom: 0;
   }
-  
-  /* errors  */
   
   p.error {
     text-align: left;
@@ -83,4 +77,14 @@
   
   .input-error {
     border-left-color: red;
-  }
+  } */
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}

@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AdminGalleryComponent } from './admin-gallery/admin-gallery.component';
 import { CommentsComponent } from './comments/comments.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'comments',
     component: CommentsComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminGalleryComponent,
   },
   // {
   //   path: '**',
