@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { IAlbum } from '../shared/interfaces/albums';
+import { IAlbum } from '../../shared/interfaces/albums';
 
 @Injectable()
 

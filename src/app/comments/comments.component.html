@@ -1,17 +1,28 @@
-<form #form="ngForm" (ngSubmit)="uploadComment(form)">
-    <div class="form-group">
-        <label for="description">Description</label>
+<form  #form="ngForm" (ngSubmit)="uploadComment(form)" class="comment">
+    <div class="form-group name">
+        <label for="description">Остави коментар</label><br>
         <input type="text" name="description" id="description" #descriptionInput="ngModel" ngModel required
             [maxlength]="250">
         <ul *ngIf="descriptionInput.invalid && descriptionInput.touched" class="errors">
             <li *ngIf="descriptionInput.errors?.required">Description is required</li>
             <li *ngIf="descriptionInput.errors?.minlength">Description should be less than 250 characters</li>
-        </ul>
-    </div>
-    <button>Submit</button>
+        </ul><br>
+    </div><br>
+    <button>Публикувай</button>
 </form>
 
-<div *ngFor="let comment of comments">
+<!-- <div *ngFor="let comment of comments">
     <div class="email">{{comment.email}}</div>
     <div class="comments">{{comment.description}}</div>
+</div> -->
+
+<div *ngFor="let comment of comments" class="comment">
+    <header class="header">
+        <p><span>{{comment.email}}</span></p>
+    </header>
+    <div class="comment-main">
+        <div class="post-content">
+            <p>{{comment.description}}</p>
+        </div>
+    </div>
 </div>

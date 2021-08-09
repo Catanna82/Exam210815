@@ -6,3 +6,9 @@ div .container{
     background-size: cover;
     min-height: 750px;
 }
+img.resize {
+    height: 600px; 
+    width: 600px; 
+    max-width: 800px; 
+    max-height: 800px;
+}

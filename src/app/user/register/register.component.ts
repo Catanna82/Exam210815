@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { sameValueValidateFactory } from '../same-value-validate-fn';
+import { sameValueValidateFactory } from '../../same-value-validate-fn';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',

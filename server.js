@@ -44,7 +44,7 @@ const UserSchema = new Schema({
 
 const CommentsSchema = new Schema({
     email: { type: String },
-    description: { type: String }
+    description: { type: String },
 }, { versionKey: false });
 
 const AlbumsSchema = new Schema({

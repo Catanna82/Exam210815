@@ -1,12 +1,15 @@
 <h2>ГАЛЕРИЯ</h2>
 <div *ngFor="let file of files">
-    <ul>
+    <p class="name">
         <button class="btn btn-lg btn-info" (click)="showImages(file)">
             {{file}}
         </button>
+    </p>
+</div>
+<div >
+    <ul>
+        <li *ngFor="let img of images" class="tn">
+            <img src={{img}}>
+        </li>
     </ul>
 </div>
-<div *ngFor="let img of images">
-    <img src={{img}}>
-</div>
-

@@ -37,6 +37,7 @@ header {
   
   nav {
     border-top: 1px solid #fafbfc;
+    border-bottom: 1px solid #fafbfc;
   }
   
   .logo {
