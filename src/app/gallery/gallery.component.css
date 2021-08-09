@@ -7,12 +7,16 @@ h2{
 
 }
 
+div.container {
+    display: inline;
+}
 div {
-    display: block;
+    display: inline;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 p.name {
@@ -22,11 +26,13 @@ p.name {
     text-transform: uppercase;
     padding: 10px;
     color: rgb(7, 7, 7);
+    
 }
 
 button {
     font-size: 17px;
     width: 150px;
+    margin: 10px;
 }
 
 /* ul {padding: 0; width: auto; margin: 20px auto;} */
