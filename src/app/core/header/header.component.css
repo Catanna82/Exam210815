@@ -66,6 +66,10 @@ header {
   .mini-navbar ul {
     background-color: #6f7b81;
     border-radius: 5px;
+    text-decoration: none;
+    color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid rgb(216, 233, 231);
   }
   
   .mini-navbar ul li+li {

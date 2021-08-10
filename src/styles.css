@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/* global */
+html{height: 100%;}
+
+body
+{ font-family: sans-serif;
+  padding: 2px;
+  margin: 2px;
+
+}
+
+
+img
+{ border: 0px; 
+  margin: 0px; 
+  padding: 0px;
+}
+
+/* logo */
+#logo
+{ width: 880px;
+  height: 95px;
+  border-top: 5px solid;
+}
+
+#logo h1
+{ font-family: century gothic, sans-serif;
+  font-size: 600%;
+  text-transform: lowercase;
+  font-weight: normal;
+  padding: 0px 0px 0px 14px;
+  border: 0px;
+  float: left;
+  letter-spacing: 0px;
+}
+
+

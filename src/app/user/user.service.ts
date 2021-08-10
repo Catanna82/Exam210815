@@ -22,18 +22,22 @@ export class UserService {
   login(data: { email: string; password: string; }) {
     return this.http.post<IUser>(`http://localhost:3000/api/login`, data, { withCredentials: true }).pipe(
       tap((user) => {
-        if (data.email === user.email && data.password === user.password) {
-          sessionStorage.setItem('userEmail', user.email);
-          if (user.admin) {
-            sessionStorage.setItem('admin', user.email);
+        if (user) {
+          if (data.email === user.email.toLowerCase() && data.password === user.password) {
+            sessionStorage.setItem('userEmail', user.email);
+            if (user.admin) {
+              sessionStorage.setItem('admin', user.email);
+            }
           }
+        } else {
+          throw new Error('User not found!');
         }
       })
     );
   }
 
   register(data: { email: string; password: string; }) {
-    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, { ...data, admin: false }, { withCredentials: true }).pipe(
+    return this.http.post<IUser>(`http://localhost:3000/api/SaveUser`, { ...data }, { withCredentials: true }).pipe(
       tap((user) => sessionStorage.setItem('userEmail', user.email))
     );
   }

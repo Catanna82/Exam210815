@@ -1,5 +1,4 @@
 const express = require('express');
-// const path = require('path');
 const bodyParser = require('body-parser');
 const mongo = require('mongoose');
 
@@ -39,7 +38,8 @@ const Schema = mongo.Schema;
 
 const UserSchema = new Schema({
     email: { type: String },
-    password: { type: String }
+    password: { type: String },
+    admin: { type: Boolean }
 }, { versionKey: false });
 
 const CommentsSchema = new Schema({
@@ -55,38 +55,31 @@ const AlbumsSchema = new Schema({
 
 const albumsModel = mongo.model('albums', AlbumsSchema, 'albums');
 const commentsModel = mongo.model('comments', CommentsSchema, 'comments');
+const model = mongo.model('users', UserSchema, 'users');
 
-app.post('/api/saveAlbums', function (req, res) {
-    const mod = new albumsModel(req.body);
-    albumsModel.find({ albumName: req.body.albumName }, function (err, data) {
+app.post('/api/SaveUser', function (req, res) {
+    model.find({}, function (err, data) {
+        let admin;
         if (err) {
             res.send(err);
         } else {
             if (data.length === 0) {
-                mod.save(function (err, data) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.send({ data: 'Record has been Inserted..!!' });
-                    }
-                });
+                admin = true;
+            } else {
+                admin = false;
             }
+            const mod = new model({...req.body, admin});
+            mod.save(function (err, data) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send({ data: 'Record has been Inserted..!!' });
+                }
+            });
         }
     });
 
-});
 
-const model = mongo.model('users', UserSchema, 'users');
-
-app.post('/api/SaveUser', function (req, res) {
-    const mod = new model(req.body);
-    mod.save(function (err, data) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send({ data: 'Record has been Inserted..!!' });
-        }
-    });
 });
 
 app.post('/api/deleteUser', function (req, res) {
@@ -173,6 +166,26 @@ app.get(`/api/loadAlbums/:albumName`, function (req, res) {
             res.send(data.images);
         }
     });
+});
+
+app.post('/api/saveAlbums', function (req, res) {
+    const mod = new albumsModel(req.body);
+    albumsModel.find({ albumName: req.body.albumName }, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            if (data.length === 0) {
+                mod.save(function (err, data) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        res.send({ data: 'Record has been Inserted..!!' });
+                    }
+                });
+            }
+        }
+    });
+
 });
 
 app.listen(3000, function () {

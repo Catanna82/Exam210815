@@ -3,24 +3,29 @@
         <ng-container>
             <div class="flex">
                 <div class="flex">
-                    <p>Album name: <input #albumNameInput="ngModel" ngModel type="text" name="albumName" id="albumName">
+                    <p>Име на албума: <input #albumNameInput="ngModel" ngModel type="text" name="albumName" id="albumName">
                     </p>
                 </div>
                 <form class="admin" method="POST">
                     <input (change)="handleSelectImages($event.target)" type="file" id="images" name="images" multiple>
                 </form>
                 <div class="flex">
-                    <p>Category:
+                    <p>Категория:
                         <select #albumCategoryInput="ngModel" ngModel name="category" id="category" class="admin">
-                            <option value="Event">Event</option>
-                            <option value="Portrait">Portrait</option>
-                            <option value="Kids">Kids</option>
-                            <option value="Nature">Nature</option>
+                            <option value="Event">Събития</option>
+                            <option value="Weddings">Сватби</option>
+                            <option value="Portrait">Портрети</option>
+                            <option value="Kids">Деца</option>
+                            <option value="Vintage">Винтидж</option>
+                            <option value="Nature">Природа</option>
+                            <option value="Animals">Животни</option>
+                            <option value="Flowers">Растения</option>
+                            <option value="Bw">Черно &amp; Бяло</option>
                         </select>
                     </p>
                 </div>
-                <button type="button" class="red-button">Cancel</button>
-                <button class="green-button" (click)="uploadAlbums(form)">Save</button>
+                <button type="button" class="r-button">Отхвърли</button>
+                <button class="g-button" (click)="uploadAlbums(form)">Запази</button>
             </div>
         </ng-container>
     </form>

@@ -28,7 +28,7 @@
       </li>
     </ul>
   </div> -->
-  <!-- <button>Login</button>
+<!-- <button>Login</button>
   <p class="text-center">
     Have an account?
     <a routerLink="/register">Register</a>
@@ -36,17 +36,23 @@
 </form> -->
 
 <div class="container">
-  <form #form="ngForm" class="login" action="/action_page.php" method="post" (ngSubmit)="loginHandler(form)" autocomplete="off">
+  <form #form="ngForm" class="login" action="/action_page.php" method="post" (ngSubmit)="loginHandler(form)"
+    autocomplete="off">
 
     <fieldset>
       <h1>Вход</h1>
 
       <p class="field field-icon">
         <label for="email"><b>Email</b></label><br>
-        <input #emailInput="ngModel" ngModel class="input-error" type="email"
-          name="email" id="email" placeholder="john@gmail.com" required email>
+        <input #emailInput="ngModel" ngModel class="input-error" type="email" name="email" id="email"
+          placeholder="john@gmail.com" required email>
       </p>
+      <ng-container *ngIf="err && !emailInput.errors?.invalidEmail && !emailInput.errors?.required">
+        <p  class="error">
+          {{err}}
+        </p>
 
+      </ng-container>
       <ng-container *ngIf="emailInput.touched">
         <p *ngIf="emailInput.errors?.required" class="error">
           Email is required!
@@ -55,7 +61,6 @@
           Email is not valid!
         </p>
       </ng-container>
-
       <p class="field field-icon">
         <label for="psw"><b>Password</b></label><br>
         <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******"
@@ -80,6 +85,3 @@
     </fieldset>
   </form>
 </div>
-
-
-
