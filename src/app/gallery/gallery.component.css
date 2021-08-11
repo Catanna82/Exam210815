@@ -7,9 +7,6 @@ h2{
 
 }
 
-div.container {
-    display: inline;
-}
 div {
     display: inline;
     height: 100%;
@@ -38,11 +35,6 @@ button {
 /* ul {padding: 0; width: auto; margin: 20px auto;} */
 li {display: inline;}
 
-/* .tn {
-    margin: 6px;
-    border: 4px solid #eee;
-    box-shadow: #555 1px 1px 8px 1px;
-} */
 
 img.img-container{
     margin: 24px;
