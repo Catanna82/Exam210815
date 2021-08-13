@@ -1,87 +1,45 @@
-<!-- {{form.invalid}}
-<form #form="ngForm" (ngSubmit)="loginHandler(form)">
+<form #form="ngForm" class="login" method="post" (ngSubmit)="loginHandler(form)" autocomplete="off">
+  <h1>Вход</h1>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" #emailInput="ngModel" ngModel required email>
-    <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
-      <li *ngIf="emailInput.errors?.required">Email is required</li>
-      <li *ngIf="emailInput.errors?.email">Email is invalid</li>
-    </ul>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" #passwordInput="ngModel" ngModel required [minlength]="6">
-    <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
-      <li *ngIf="passwordInput.errors?.required">Password is required</li>
-    </ul>
-  </div>
-  <!-- <div class="form-group">
-    <label for="repeat-password">Repeat password</label>
-    <input type="password" name="repeatPassword" id="repeat-password" #repeatPasswordInput="ngModel" ngModel
-      appSameValue="password" required [minlength]="6">
-    <ul *ngIf="repeatPasswordInput.invalid && repeatPasswordInput.touched" class="errors">
-      <li *ngIf="repeatPasswordInput.errors?.required">Repeat password is required</li>
-      <li *ngIf="repeatPasswordInput.errors?.minlength">Repeat password should be more than 6 characters</li>
-      <li *ngIf="repeatPasswordInput.errors?.sameValue">Password and repeat password don't match. Password value:
-        {{repeatPasswordInput.errors!.sameValue.password}} and repeat password value is: Password value:
-        {{repeatPasswordInput.errors!.sameValue.repeatPassword}}
-      </li>
-    </ul>
-  </div> -->
-<!-- <button>Login</button>
-  <p class="text-center">
-    Have an account?
-    <a routerLink="/register">Register</a>
+  <p class="field field-icon">
+    <label for="email" style="margin-right: 25px;"><b>Email:</b></label>
+    <input #emailInput="ngModel" ngModel type="email" name="email" id="email" placeholder="john@gmail.com" required
+      email>
   </p>
-</form> -->
-
-<div class="container">
-  <form #form="ngForm" class="login" action="/action_page.php" method="post" (ngSubmit)="loginHandler(form)"
-    autocomplete="off">
-
-    <fieldset>
-      <h1>Вход</h1>
-
-      <p class="field field-icon">
-        <label for="email"><b>Email</b></label><br>
-        <input #emailInput="ngModel" ngModel class="input-error" type="email" name="email" id="email"
-          placeholder="john@gmail.com" required email>
+  <ng-container *ngIf="err && !emailInput.errors?.invalidEmail && !emailInput.errors?.required">
+    <p class="error">
+      {{err}}
+    </p>
+  </ng-container>
+  <ng-container *ngIf="emailInput.touched">
+    <p *ngIf="emailInput.errors?.required" class="error">
+      Email is required!
+    </p>
+    <p *ngIf="emailInput.errors?.invalidEmail" class="error">
+      Email is not valid!
+    </p>
+  </ng-container>
+  </div>
+  <div class="form-group">
+    <p class="field field-icon">
+      <label style="margin-right: 10px;" for="psw"><b>Парола:</b></label>
+      <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******"
+        [minlength]="6" required>
+    </p>
+    <ng-container *ngIf="passwordInput.touched">
+      <p *ngIf="passwordInput.errors?.required" class="error">
+        Password is required!
       </p>
-      <ng-container *ngIf="err && !emailInput.errors?.invalidEmail && !emailInput.errors?.required">
-        <p  class="error">
-          {{err}}
-        </p>
-
-      </ng-container>
-      <ng-container *ngIf="emailInput.touched">
-        <p *ngIf="emailInput.errors?.required" class="error">
-          Email is required!
-        </p>
-        <p *ngIf="emailInput.errors?.invalidEmail" class="error">
-          Email is not valid!
-        </p>
-      </ng-container>
-      <p class="field field-icon">
-        <label for="psw"><b>Password</b></label><br>
-        <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******"
-          [minlength]="6" required>
+      <p *ngIf="passwordInput.errors?.minlength" class="error">
+        Password must be at least 6 characters!
       </p>
-      <ng-container *ngIf="passwordInput.touched">
-        <p *ngIf="passwordInput.errors?.required" class="error">
-          Password is required!
-        </p>
-        <p *ngIf="passwordInput.errors?.minlength" class="error">
-          Password must be at least 6 characters!
-        </p>
-      </ng-container>
+    </ng-container>
+  </div>
 
-      <button (click)="loginHandler(form)" class="btn">Login</button>
+  <button (click)="loginHandler(form)" class="btn">Вход</button>
 
-      <p class="text-center">
-        Have an account?
-        <a routerLink="/register">Регистрация</a>
-      </p>
-
-    </fieldset>
-  </form>
-</div>
+  <p class="text-center">
+    Нямате акаунт?
+    <a routerLink="/register">Регистрация</a>
+  </p>
+</form>

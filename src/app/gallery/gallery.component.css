@@ -32,9 +32,7 @@ button {
     margin: 10px;
 }
 
-/* ul {padding: 0; width: auto; margin: 20px auto;} */
 li {display: inline;}
-
 
 img.img-container{
     margin: 24px;
@@ -47,3 +45,4 @@ img.img-container{
     background-repeat: no-repeat;
     align-content: center;
 }
+

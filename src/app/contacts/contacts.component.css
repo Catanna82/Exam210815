@@ -34,6 +34,7 @@ agm-map{
     width: 50px;
     text-align: center;
     text-decoration: none;
+    margin:0 8px;
   }
   
   /* Add a hover effect if you want */

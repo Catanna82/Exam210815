@@ -1,22 +1,18 @@
-div .container{
-    display: block;
+div.container{
+    display: inline-block;;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 750px;
+    position: relative;
+    text-align: center;
 }
-/* img.resize {
-    height: 600px; 
-    width: 600px; 
-    max-width: 800px; 
-    max-height: 800px;
-} */
 
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 5px;
-    width: 600px;
-    height: 600px;
-  }
+    padding: 11px;
+    width: 32%;
+    height: 32%;
+}
