@@ -2,9 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { IUser } from '../shared/interfaces/user';
-
-
-
 @Injectable()
 export class UserService {
 
@@ -42,16 +39,4 @@ export class UserService {
     );
   }
 
-  // getProfileInfo() {
-  //   return this.http.get<IUser>(`${apiURL}/users/profile`, { withCredentials: true }).pipe(
-  //     tap((user) => this.user = user)
-  //   )
-  // }
-
-
-  // updateProfile(data: { username: string; email: string; tel: string; }) {
-  //   return this.http.put<IUser>(`${apiURL}/users/profile`, data, { withCredentials: true }).pipe(
-  //     tap((user) => this.user = user)
-  //   );
-  // }
 }

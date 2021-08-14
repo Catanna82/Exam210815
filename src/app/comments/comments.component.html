@@ -1,21 +1,16 @@
+<div class="container" style="background-color: black; padding-left: 600px;">
 <form  #form="ngForm" (ngSubmit)="uploadComment(form)" class="comment">
     <div class="form-group name">
-        <label for="description">Остави коментар</label><br>
+        <label for="description" style="margin: 5px;">Остави коментар:</label>
         <input type="text" name="description" id="description" #descriptionInput="ngModel" ngModel required
             [maxlength]="250">
-        <ul *ngIf="descriptionInput.invalid && descriptionInput.touched" class="errors">
-            <li *ngIf="descriptionInput.errors?.required">Description is required</li>
-            <li *ngIf="descriptionInput.errors?.minlength">Description should be less than 250 characters</li>
-        </ul><br>
+        <p *ngIf="descriptionInput.invalid && descriptionInput.touched">
+            <a *ngIf="descriptionInput.errors?.required" style="color: red;">Въведете коментар!</a>
+            <a *ngIf="descriptionInput.errors?.minlength" style="color: red;">Коментара трябва да съдържа под 250 символа!</a>
+        </p><br>
     </div><br>
-    <button>Публикувай</button>
+    <button style="background-color: #91f3cf" >Публикувай</button>
 </form>
-
-<!-- <div *ngFor="let comment of comments">
-    <div class="email">{{comment.email}}</div>
-    <div class="comments">{{comment.description}}</div>
-</div> -->
-
 <div *ngFor="let comment of comments" class="comment">
     <header class="header">
         <p><span>{{comment.email}}</span></p>
@@ -25,4 +20,5 @@
             <p>{{comment.description}}</p>
         </div>
     </div>
+</div>
 </div>

@@ -1,6 +1,5 @@
 import { AbstractControl } from "@angular/forms";
 
-
 export function sameValueValidateFactory(
   controlName: string,
   otherControl: AbstractControl,

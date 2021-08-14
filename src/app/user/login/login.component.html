@@ -1,24 +1,24 @@
 <form #form="ngForm" class="login" method="post" (ngSubmit)="loginHandler(form)" autocomplete="off">
   <h1>Вход</h1>
   <div class="form-group">
-  <p class="field field-icon">
-    <label for="email" style="margin-right: 25px;"><b>Email:</b></label>
-    <input #emailInput="ngModel" ngModel type="email" name="email" id="email" placeholder="john@gmail.com" required
-      email>
-  </p>
-  <ng-container *ngIf="err && !emailInput.errors?.invalidEmail && !emailInput.errors?.required">
-    <p class="error">
-      {{err}}
+    <p class="field field-icon">
+      <label for="email" style="margin-right: 25px;"><b>Email:</b></label>
+      <input #emailInput="ngModel" ngModel type="email" name="email" id="email" placeholder="john@gmail.com" required
+        email>
     </p>
-  </ng-container>
-  <ng-container *ngIf="emailInput.touched">
-    <p *ngIf="emailInput.errors?.required" class="error">
-      Email is required!
-    </p>
-    <p *ngIf="emailInput.errors?.invalidEmail" class="error">
-      Email is not valid!
-    </p>
-  </ng-container>
+    <ng-container *ngIf="err && !emailInput.errors?.invalidEmail && !emailInput.errors?.required">
+      <p class="error">
+        {{err}}
+      </p>
+    </ng-container>
+    <ng-container *ngIf="emailInput.touched">
+      <p *ngIf="emailInput.errors?.required" class="error">
+        Email е задължителен!
+      </p>
+      <p *ngIf="emailInput.errors?.invalidEmail" class="error">
+        Невалиден email!
+      </p>
+    </ng-container>
   </div>
   <div class="form-group">
     <p class="field field-icon">
@@ -28,10 +28,10 @@
     </p>
     <ng-container *ngIf="passwordInput.touched">
       <p *ngIf="passwordInput.errors?.required" class="error">
-        Password is required!
+        Паролата е задължителна!
       </p>
       <p *ngIf="passwordInput.errors?.minlength" class="error">
-        Password must be at least 6 characters!
+        Паролата трябва да бъде най-малко 6 символа!
       </p>
     </ng-container>
   </div>

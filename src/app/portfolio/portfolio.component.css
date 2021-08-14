@@ -1,18 +1,18 @@
 div.container{
-    display: inline-block;;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 750px;
-    position: relative;
-    text-align: center;
+  display: inline-block;;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 750px;
+  position: relative;
+  text-align: center;
 }
 
 img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 11px;
-    width: 32%;
-    height: 32%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 11px;
+  width: 32%;
+  height: 32%;
 }

@@ -13,6 +13,7 @@ import { sameValueValidateFactory } from './same-value-validate-fn';
     }
   ]
 })
+
 export class SameValueDirective implements Validator, OnDestroy {
 
   @Input() appSameValue = "";
@@ -37,5 +38,4 @@ export class SameValueDirective implements Validator, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

@@ -1,62 +1,45 @@
-  form.register {
-    width: 40%;
-    margin: 2em auto 0;
-  }
-
-  .form-group{
-    margin: 15px;
-  }
-
-.register p {
-    padding-bottom: 0;
-    padding-top: 1.5rem;
-  }
-
-.register input {
-    flex: 0 1 100%;
-    border: 1px solid;
-    padding: 0.3em;
-    border-left: 0.3em solid green;
-    border-top-right-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
+form.register {
+  width: 40%;
+  margin: 2em auto 0;
 }
 
-.register select {
-    border-color: black;
-  }
+.form-group{
+  margin: 15px;
+}
+
+.register input {
+  border: 1px solid;
+  padding: 0.3em;
+  border-left: 0.3em solid green;
+  border-top-right-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
 
 .register button {
-    border: none;
-    border-radius: 0.3em;
-    padding: 0.6em 1.2em;
-    margin-top: 1.5rem;
-    width: 30%;
-    outline: none;
-  }
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.6em 1.2em;
+  margin-top: 1.5rem;
+  width: 30%;
+  outline: none;
+}
 
- .register a {
-    color: #007bff;
-  }
-  
- .register a:hover {
-    cursor: pointer;
-  }
+.register a {
+  color: #007bff;
+}
 
- .register .field {
-    display: flex;
-    padding-bottom: 0;
-  }
-  
-  p.error {
-    text-align: left;
-    border-radius: 0.3em;
-    color: red;
-    padding-top: 0;
-  }
-  
-  .input-error {
-    border-left-color: red;
-  } */
+/* errors  */
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+}
+
+.input-error {
+  border-left-color: red;
+}
 
 .btn {
   background-color: #04AA6D;

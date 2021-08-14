@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from './gallery.service';
 
-
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -38,4 +37,3 @@ export class GalleryComponent implements OnInit {
     
   }
 }
-
